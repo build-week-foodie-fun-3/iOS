@@ -7,17 +7,50 @@
 //
 
 import UIKit
+import CoreData
 
 class RestTableViewController: UITableViewController {
+    
+    var restaurantController = RestaurantController()
+    
+//    lazy var fetchedResultsController: NSFetchedResultsController<BucketList> = {
+//
+//        let fetchRequest: NSFetchRequest<BucketList> = BucketList.fetchRequest()
+//        fetchRequest.sortDescriptors = [
+//            NSSortDescriptor(key: "name", ascending: true)
+//        ]
+//
+//        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: "name", cacheName: nil)
+//
+//        frc.delegate = self
+//
+//        do {
+//            try frc.performFetch()
+//        } catch {
+//            fatalError("Error performing fetch for frc: \(error)")
+//        }
+//        return frc
+//    }()
+    
+    
+    // MARK: - Methods
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if restaurantController.bearer == nil {
+            performSegue(withIdentifier: "LoginSegue", sender: self)
+            
+        } else {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -77,14 +110,26 @@ class RestTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "LoginSegue" {
+            if let loginVC = segue.destination as? LoginViewController {
+                loginVC.restaurantController = restaurantController
+            }
+            
+//        } else if segue.identifier == "CreateBucketListSegue" {
+//            if let createBLVC = segue.destination as? CreateBucketListViewController {
+//                createBLVC.bucketListController = bucketListController
+//            }
+//        } else if segue.identifier == "BLDetailViewSegue" {
+//            if let bucketListItemVC = segue.destination as? BucketListItemViewController,
+//                let indexPath = tableView.indexPathForSelectedRow {
+//                bucketListItemVC.bucketList = fetchedResultsController.object(at: indexPath)
+//                bucketListItemVC.bucketListController = bucketListController
+//            }
+//        }
+        }
     }
-    */
-
 }

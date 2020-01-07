@@ -23,8 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XE8-US-rok">
-                                <rect key="frame" x="20" y="194" width="130" height="65"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="XE8-US-rok">
+                                <rect key="frame" x="20" y="188" width="130" height="65"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhH-Xb-viz">
                                         <rect key="frame" x="0.0" y="0.0" width="74.5" height="28"/>
@@ -48,7 +48,7 @@
                                                     <color key="titleColor" red="0.0078431372550000003" green="0.49803921569999998" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="h8t-dW-Eml" kind="show" id="h5J-kb-RVZ"/>
+                                                    <segue destination="h8t-dW-Eml" kind="show" identifier="CreateAccountSegue" id="h5J-kb-RVZ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -58,8 +58,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="USS-Fp-JAx">
                                 <rect key="frame" x="20" y="351.5" width="374" height="58.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myY-xv-Og5">
-                                        <rect key="frame" x="0.0" y="0.0" width="64.5" height="16.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="myY-xv-Og5">
+                                        <rect key="frame" x="0.0" y="0.0" width="68.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Exo-SemiBold" family="Exo" pointSize="14"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -86,8 +86,8 @@
                                 <rect key="frame" x="20" y="430" width="374" height="62.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwv-vJ-9zN">
-                                        <rect key="frame" x="0.0" y="0.0" width="90" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwv-vJ-9zN">
+                                        <rect key="frame" x="0.0" y="0.0" width="66" height="20.5"/>
                                         <fontDescription key="fontDescription" name="Exo-SemiBold" family="Exo" pointSize="14"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -99,7 +99,7 @@
                                             <constraint firstAttribute="height" constant="34" id="bgM-lY-fQH"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -122,12 +122,17 @@
                                 <state key="normal" title="Sign In">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="signInButtonTapped:" destination="mc9-qp-fXc" eventType="touchUpInside" id="6d0-kR-dU0"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="g50-ur-ygx" firstAttribute="trailing" secondItem="Xyt-PG-nTP" secondAttribute="trailing" constant="20" id="7Pn-Eh-1Z9"/>
+                            <constraint firstItem="XE8-US-rok" firstAttribute="top" secondItem="g50-ur-ygx" secondAttribute="top" constant="100" id="Mu9-Fd-nK1"/>
                             <constraint firstItem="USS-Fp-JAx" firstAttribute="leading" secondItem="sNd-oU-E5X" secondAttribute="leading" id="R6o-4b-Vod"/>
+                            <constraint firstItem="XE8-US-rok" firstAttribute="leading" secondItem="g50-ur-ygx" secondAttribute="leading" constant="20" id="UFI-rF-uk2"/>
                             <constraint firstItem="g50-ur-ygx" firstAttribute="bottom" secondItem="Xyt-PG-nTP" secondAttribute="bottom" constant="50" id="UgU-uK-q7u"/>
                             <constraint firstItem="USS-Fp-JAx" firstAttribute="trailing" secondItem="sNd-oU-E5X" secondAttribute="trailing" id="dmj-SW-Lly"/>
                             <constraint firstItem="Xyt-PG-nTP" firstAttribute="leading" secondItem="g50-ur-ygx" secondAttribute="leading" constant="20" id="hvO-cO-gBM"/>
@@ -136,6 +141,10 @@
                         <viewLayoutGuide key="safeArea" id="g50-ur-ygx"/>
                     </view>
                     <navigationItem key="navigationItem" id="6bg-oS-oOS"/>
+                    <connections>
+                        <outlet property="passwordTextField" destination="kgS-cV-UTO" id="84T-p0-pfd"/>
+                        <outlet property="usernameTextField" destination="jYg-Wd-eUn" id="zQQ-7J-xGq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oKF-zX-FGi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -186,8 +195,8 @@
                                 <rect key="frame" x="20" y="349" width="374" height="62.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6v-cO-Ely">
-                                        <rect key="frame" x="0.0" y="0.0" width="90" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6v-cO-Ely">
+                                        <rect key="frame" x="0.0" y="0.0" width="66" height="20.5"/>
                                         <fontDescription key="fontDescription" name="Exo-SemiBold" family="Exo" pointSize="14"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -199,7 +208,7 @@
                                             <constraint firstAttribute="height" constant="34" id="AZn-76-QM4"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -216,8 +225,8 @@
                                 <rect key="frame" x="20" y="436" width="374" height="62.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grW-1g-exU">
-                                        <rect key="frame" x="0.0" y="0.0" width="62" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="grW-1g-exU">
+                                        <rect key="frame" x="0.0" y="0.0" width="58.5" height="20.5"/>
                                         <fontDescription key="fontDescription" name="Exo-SemiBold" family="Exo" pointSize="14"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -229,7 +238,7 @@
                                             <constraint firstAttribute="height" constant="34" id="hbu-Eg-yu7"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -246,8 +255,8 @@
                                 <rect key="frame" x="20" y="520" width="374" height="62.5"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5i-Hg-OyE">
-                                        <rect key="frame" x="0.0" y="0.0" width="116" height="20.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n5i-Hg-OyE">
+                                        <rect key="frame" x="0.0" y="0.0" width="38.5" height="20.5"/>
                                         <fontDescription key="fontDescription" name="Exo-SemiBold" family="Exo" pointSize="14"/>
                                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -259,7 +268,7 @@
                                             <constraint firstAttribute="height" constant="34" id="wqQ-bt-ic0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -282,6 +291,9 @@
                                 <state key="normal" title="Create Account">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="createAccountButtonTapped:" destination="h8t-dW-Eml" eventType="touchUpInside" id="aS1-3A-fl1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -298,6 +310,12 @@
                         <viewLayoutGuide key="safeArea" id="MMt-BB-6O7"/>
                     </view>
                     <navigationItem key="navigationItem" id="471-mK-5Ze"/>
+                    <connections>
+                        <outlet property="emailTextField" destination="Ipy-Jj-y3M" id="ZW0-Yl-f0y"/>
+                        <outlet property="locationTextField" destination="juj-qe-1LN" id="EhV-uK-uzx"/>
+                        <outlet property="passwordTextField" destination="kC3-uP-oCe" id="oPQ-Zf-l0e"/>
+                        <outlet property="usernameTextField" destination="SX1-9P-ORp" id="erN-H4-Dx1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6d7-yJ-QCN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

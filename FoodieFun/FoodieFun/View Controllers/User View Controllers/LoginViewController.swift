@@ -9,6 +9,11 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    var restaurantController: RestaurantController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,15 +21,31 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func signInButtonTapped(_ sender: UIButton) {
+        guard let restaurantController = restaurantController else { return }
+        guard let username = usernameTextField.text,
+            !username.isEmpty,
+            let password = passwordTextField.text,
+            !password.isEmpty else { return }
+        
+        let user = User(username: username, password: password)
+        
+        restaurantController.login(with: user) { (error) in
+            guard error == nil else { return }
+            DispatchQueue.main.async {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
     }
-    */
-
+    
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "CreateAccountSegue" {
+            if let createVC = segue.destination as? SignUpViewController {
+                createVC.restaurantController = restaurantController
+            }
+        }
+    }
 }
