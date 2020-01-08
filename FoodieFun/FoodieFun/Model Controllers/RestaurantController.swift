@@ -110,7 +110,7 @@ class RestaurantController {
         
         guard let loggedInUser = loggedInUser, let userId = loggedInUser.id else { return }
         
-        let restaurantRep = RestaurantRepresentation(id: id, name: name, location: location, hours: hours, photoUrl: photoUrl, rating: rating, typeOfCuisine: typeOfCuisine, userId: userId)
+        let restaurantRep = RestaurantRepresentation(id: nil, name: name, location: location, hours: hours, photoUrl: photoUrl, rating: rating, typeOfCuisine: typeOfCuisine, userId: userId)
         
         createRestaurantToServer(restaurantRep: restaurantRep) { (result) in
             do {
@@ -175,7 +175,7 @@ class RestaurantController {
                     restaurant.hours = representation.hours
                     restaurant.typeofcuisine = representation.typeOfCuisine
                     restaurant.rating = representation.rating
-                    restaurant.userId = representation.userId
+                    restaurant.user_id = representation.userId ?? -1
                     restaurant.location = representation.location
                     restaurant.photourl = representation.photoUrl
                 
@@ -204,12 +204,13 @@ class RestaurantController {
         let requestURL = baseURL.appendingPathComponent("/api/auth/restaurant")
         
         var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.post.rawValue
+        request.httpMethod = "POST"
         request.setValue("\(bearer.token)", forHTTPHeaderField: HeaderNames.authorization.rawValue)
         request.setValue("application/json", forHTTPHeaderField: HeaderNames.contentType.rawValue)
         
         do {
             request.httpBody = try JSONEncoder().encode(restaurantRep)
+            print(String(data: request.httpBody!, encoding: .utf8)!)
         } catch {
             print("Error encoding restaurant representation: \(error)")
             completion(.failure(.badEncode))

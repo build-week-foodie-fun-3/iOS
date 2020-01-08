@@ -10,11 +10,12 @@ import Foundation
 import CoreData
 
 extension Restaurant {
+    
     var restaurantRepresentation: RestaurantRepresentation? {
         
         guard let name = name else { return nil}
        
-        let restaurant = RestaurantRepresentation(id: id, name: name, location: location, hours: hours ?? "", photoUrl: photourl ?? "", rating: rating ?? "", typeOfCuisine: typeofcuisine ?? "", userId: userId)
+        let restaurant = RestaurantRepresentation(id: id, name: name, location: location, hours: hours ?? "", photoUrl: photourl ?? "", rating: rating ?? "", typeOfCuisine: typeofcuisine ?? "", userId: user_id)
         return restaurant
     }
     
@@ -27,11 +28,11 @@ extension Restaurant {
         self.photourl = photoUrl
         self.rating = rating
         self.typeofcuisine = typeOfCuisine
-        self.userId = userId
+        self.user_id = userId
     }
     
     @discardableResult convenience init?(restaurantRep: RestaurantRepresentation, context: NSManagedObjectContext) {
         
-        self.init(id: restaurantRep.id ?? -1, name: restaurantRep.name, location: restaurantRep.location ?? "", hours: restaurantRep.hours, photoUrl: restaurantRep.photoUrl, rating: restaurantRep.rating, typeOfCuisine: restaurantRep.typeOfCuisine, userId: restaurantRep.userId, context: context)
+        self.init(id: restaurantRep.id ?? -1, name: restaurantRep.name, location: restaurantRep.location ?? "", hours: restaurantRep.hours, photoUrl: restaurantRep.photoUrl, rating: restaurantRep.rating, typeOfCuisine: restaurantRep.typeOfCuisine, userId: restaurantRep.userId ?? -1, context: context)
     }
 }

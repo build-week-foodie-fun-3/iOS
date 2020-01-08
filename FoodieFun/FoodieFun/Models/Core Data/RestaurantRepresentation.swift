@@ -16,7 +16,7 @@ struct RestaurantRepresentation: Codable {
     let photoUrl: String
     let rating: String
     let typeOfCuisine: String
-    let userId: Int32
+    let userId: Int32?
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -25,7 +25,7 @@ struct RestaurantRepresentation: Codable {
         case hours
         case rating
         case photoUrl = "photourl"
-        case typeOfCuisine = "typeofcuisine"
+        case typeOfCuisine = "typeofcusine"
         case userId = "user_id"
     }
 }

@@ -24,12 +24,13 @@
 		9589070823C3B98100D7A1F4 /* RestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589070723C3B98100D7A1F4 /* RestTableViewController.swift */; };
 		9589070A23C3B9A300D7A1F4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589070923C3B9A300D7A1F4 /* LoginViewController.swift */; };
 		9589070C23C3B9B200D7A1F4 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589070B23C3B9B200D7A1F4 /* SignUpViewController.swift */; };
-		9589070E23C3B9D900D7A1F4 /* AddDetailRestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589070D23C3B9D900D7A1F4 /* AddDetailRestViewController.swift */; };
 		9589071223C3BA6900D7A1F4 /* RestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589071123C3BA6900D7A1F4 /* RestTableViewCell.swift */; };
 		9589071423C3F36800D7A1F4 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589071323C3F36800D7A1F4 /* ProfileViewController.swift */; };
 		9589071623C3F3A400D7A1F4 /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589071523C3F3A400D7A1F4 /* ReviewDetailViewController.swift */; };
 		9589071823C3F3D200D7A1F4 /* ReviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589071723C3F3D200D7A1F4 /* ReviewTableViewController.swift */; };
 		9589071A23C3F4F300D7A1F4 /* AllReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589071923C3F4F300D7A1F4 /* AllReviewsTableViewCell.swift */; };
+		95F4741F23C6414A0075B7FF /* AddRestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4741E23C6414A0075B7FF /* AddRestViewController.swift */; };
+		95F4742123C65F7A0075B7FF /* DetailRestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4742023C65F7A0075B7FF /* DetailRestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,12 +74,13 @@
 		9589070723C3B98100D7A1F4 /* RestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTableViewController.swift; sourceTree = "<group>"; };
 		9589070923C3B9A300D7A1F4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9589070B23C3B9B200D7A1F4 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		9589070D23C3B9D900D7A1F4 /* AddDetailRestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDetailRestViewController.swift; sourceTree = "<group>"; };
 		9589071123C3BA6900D7A1F4 /* RestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestTableViewCell.swift; sourceTree = "<group>"; };
 		9589071323C3F36800D7A1F4 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9589071523C3F3A400D7A1F4 /* ReviewDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewController.swift; sourceTree = "<group>"; };
 		9589071723C3F3D200D7A1F4 /* ReviewTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewController.swift; sourceTree = "<group>"; };
 		9589071923C3F4F300D7A1F4 /* AllReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReviewsTableViewCell.swift; sourceTree = "<group>"; };
+		95F4741E23C6414A0075B7FF /* AddRestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestViewController.swift; sourceTree = "<group>"; };
+		95F4742023C65F7A0075B7FF /* DetailRestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,7 +216,8 @@
 			children = (
 				9589070723C3B98100D7A1F4 /* RestTableViewController.swift */,
 				9589071123C3BA6900D7A1F4 /* RestTableViewCell.swift */,
-				9589070D23C3B9D900D7A1F4 /* AddDetailRestViewController.swift */,
+				95F4741E23C6414A0075B7FF /* AddRestViewController.swift */,
+				95F4742023C65F7A0075B7FF /* DetailRestViewController.swift */,
 			);
 			path = "Restaurant View Controllers";
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9572412523C50AFE004951A5 /* FoodieFun.xcdatamodeld in Sources */,
+				95F4742123C65F7A0075B7FF /* DetailRestViewController.swift in Sources */,
 				9589070A23C3B9A300D7A1F4 /* LoginViewController.swift in Sources */,
 				958906D823C3AFFE00D7A1F4 /* AppDelegate.swift in Sources */,
 				9572412923C528C9004951A5 /* RestaurantRepresentation.swift in Sources */,
@@ -372,12 +376,12 @@
 				9589070C23C3B9B200D7A1F4 /* SignUpViewController.swift in Sources */,
 				9589071623C3F3A400D7A1F4 /* ReviewDetailViewController.swift in Sources */,
 				9572412023C4E730004951A5 /* RestaurantController.swift in Sources */,
+				95F4741F23C6414A0075B7FF /* AddRestViewController.swift in Sources */,
 				9589071823C3F3D200D7A1F4 /* ReviewTableViewController.swift in Sources */,
 				9572411B23C4E6DC004951A5 /* User.swift in Sources */,
 				9572412B23C529C8004951A5 /* Restaurant+Convenience.swift in Sources */,
 				9589071A23C3F4F300D7A1F4 /* AllReviewsTableViewCell.swift in Sources */,
 				9589071423C3F36800D7A1F4 /* ProfileViewController.swift in Sources */,
-				9589070E23C3B9D900D7A1F4 /* AddDetailRestViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

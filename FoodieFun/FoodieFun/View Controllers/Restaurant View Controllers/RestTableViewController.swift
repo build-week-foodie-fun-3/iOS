@@ -11,6 +11,9 @@ import CoreData
 
 class RestTableViewController: UITableViewController {
     
+    @IBOutlet weak var sideMenuView: UIView!
+    var sideMenuPosition = 1
+    
     var restaurantController = RestaurantController()
     
     lazy var fetchedResultsController: NSFetchedResultsController<Restaurant> = {
@@ -38,6 +41,7 @@ class RestTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        sideMenuView.isHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -80,6 +84,12 @@ class RestTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - Helper Methods
+    
+    func toggleSideMenu() {
+    }
+
+    
     
     // MARK: - Navigation
     
@@ -90,17 +100,16 @@ class RestTableViewController: UITableViewController {
                 loginVC.restaurantController = restaurantController
             }
             
-//        } else if segue.identifier == "CreateBucketListSegue" {
-//            if let createBLVC = segue.destination as? CreateBucketListViewController {
-//                createBLVC.bucketListController = bucketListController
-//            }
-//        } else if segue.identifier == "BLDetailViewSegue" {
-//            if let bucketListItemVC = segue.destination as? BucketListItemViewController,
-//                let indexPath = tableView.indexPathForSelectedRow {
-//                bucketListItemVC.bucketList = fetchedResultsController.object(at: indexPath)
-//                bucketListItemVC.bucketListController = bucketListController
-//            }
-//        }
+        } else if segue.identifier == "AddRestSegue" {
+            if let createVC = segue.destination as? AddRestViewController {
+                createVC.restaurantController = restaurantController
+            }
+        } else if segue.identifier == "RestDetailSegue" {
+            if let detailVC = segue.destination as? DetailRestViewController,
+                let indexPath = tableView.indexPathForSelectedRow {
+                detailVC.restaurant = fetchedResultsController.object(at: indexPath)
+                detailVC.restaurantController = restaurantController
+            }
         }
     }
 }
