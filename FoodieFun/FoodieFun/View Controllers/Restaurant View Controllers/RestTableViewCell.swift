@@ -9,6 +9,12 @@
 import UIKit
 
 class RestTableViewCell: UITableViewCell {
+    
+    var restaurant: Restaurant? {
+        didSet {
+            updateViews()
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,5 +26,8 @@ class RestTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func updateViews() {
+        
+    }
 }

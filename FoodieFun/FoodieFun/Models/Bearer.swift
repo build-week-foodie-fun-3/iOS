@@ -10,4 +10,5 @@ import Foundation
 
 struct Bearer: Codable {
     var token: String
+    var id: Int32
 }

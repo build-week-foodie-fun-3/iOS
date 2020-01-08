@@ -23,3 +23,26 @@ struct User: Codable {
         case id
     }
 }
+
+
+enum HTTPMethod: String {
+    case get = "GET"
+    case put = "PUT"
+    case post = "POST"
+    case delete = "DELETE"
+}
+
+enum NetworkingError: Error {
+    case noData
+    case noBearer
+    case serverError(Error)
+    case unexpectedStatusCode(Int)
+    case badDecode
+    case badEncode
+    case noRepresentation
+}
+
+enum HeaderNames: String {
+    case authorization = "Authorization"
+    case contentType = "Content-Type"
+}
