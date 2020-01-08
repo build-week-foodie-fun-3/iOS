@@ -106,16 +106,47 @@ class RestaurantController {
     
     // MARK: - Core Data CRUD Methods
     
-    func createRestaurant() {
+    func createRestaurant(id: Int32, name: String, location: String, hours: String, photoUrl: String, rating: String, typeOfCuisine: String, context: NSManagedObjectContext) {
         
+        guard let loggedInUser = loggedInUser, let userId = loggedInUser.id else { return }
+        
+        let restaurantRep = RestaurantRepresentation(id: id, name: name, location: location, hours: hours, photoUrl: photoUrl, rating: rating, typeOfCuisine: typeOfCuisine, userId: userId)
+        
+        createRestaurantToServer(restaurantRep: restaurantRep) { (result) in
+            do {
+                _ = try result.get()
+
+                self.fetchAllRestaurantsFromServer()
+            } catch {
+                print("Error creating a restaurant to server: \(error)")
+            }
+        }
     }
     
-    func updateRestaurant() {
+    func updateRestaurant(restaurant: Restaurant, id: Int32, name: String, location: String, hours: String, photoUrl: String, rating: String, typeOfCuisine: String, context: NSManagedObjectContext) {
         
+        updateRestaurantToServer(restaurant: restaurant) { (result) in
+            do {
+                _ = try result.get()
+                CoreDataStack.shared.save(context: context)
+            } catch {
+                print("Error updating the restaurant to server: \(error)")
+            }
+        }
     }
     
-    func deleteRestaurant() {
-        
+    func deleteRestaurant(restaurant: Restaurant, context: NSManagedObjectContext) {
+        context.performAndWait {
+            deleteRestaurantFromServer(restaurant: restaurant) { (result) in
+                do {
+                    let restaurant = try result.get()
+                    context.delete(restaurant)
+                    CoreDataStack.shared.save(context: context)
+                } catch {
+                    print("Error deleting restaurant from server: \(error)")
+                }
+            }
+        }
     }
     
     func updateCDfromServerFetch(with representations: [RestaurantRepresentation]) {
