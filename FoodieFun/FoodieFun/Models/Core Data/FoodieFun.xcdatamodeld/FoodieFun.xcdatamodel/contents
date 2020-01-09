@@ -10,7 +10,18 @@
         <attribute name="typeofcuisine" optional="YES" attributeType="String"/>
         <attribute name="user_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="Review" representedClassName="Review" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="itemrating" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="itemreview" optional="YES" attributeType="String"/>
+        <attribute name="menuitem" optional="YES" attributeType="String"/>
+        <attribute name="photourl" optional="YES" attributeType="String"/>
+        <attribute name="price" optional="YES" attributeType="String"/>
+        <attribute name="restaurant_id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="typeofcuisine" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="Restaurant" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Review" positionX="-63" positionY="45" width="128" height="163"/>
     </elements>
 </model>

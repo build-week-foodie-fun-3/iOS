@@ -31,6 +31,10 @@
 		9589071A23C3F4F300D7A1F4 /* AllReviewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9589071923C3F4F300D7A1F4 /* AllReviewsTableViewCell.swift */; };
 		95F4741F23C6414A0075B7FF /* AddRestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4741E23C6414A0075B7FF /* AddRestViewController.swift */; };
 		95F4742123C65F7A0075B7FF /* DetailRestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4742023C65F7A0075B7FF /* DetailRestViewController.swift */; };
+		95F4742323C679420075B7FF /* ReviewRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4742223C679420075B7FF /* ReviewRepresentation.swift */; };
+		95F4742523C67A910075B7FF /* Review+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4742423C67A910075B7FF /* Review+Convenience.swift */; };
+		95F4742723C698E70075B7FF /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4742623C698E70075B7FF /* AddReviewViewController.swift */; };
+		95F4742923C6A34A0075B7FF /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F4742823C6A34A0075B7FF /* ReviewTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +85,10 @@
 		9589071923C3F4F300D7A1F4 /* AllReviewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllReviewsTableViewCell.swift; sourceTree = "<group>"; };
 		95F4741E23C6414A0075B7FF /* AddRestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestViewController.swift; sourceTree = "<group>"; };
 		95F4742023C65F7A0075B7FF /* DetailRestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRestViewController.swift; sourceTree = "<group>"; };
+		95F4742223C679420075B7FF /* ReviewRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRepresentation.swift; sourceTree = "<group>"; };
+		95F4742423C67A910075B7FF /* Review+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Review+Convenience.swift"; sourceTree = "<group>"; };
+		95F4742623C698E70075B7FF /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
+		95F4742823C6A34A0075B7FF /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +140,8 @@
 				9572412323C50AFE004951A5 /* FoodieFun.xcdatamodeld */,
 				9572412823C528C9004951A5 /* RestaurantRepresentation.swift */,
 				9572412A23C529C8004951A5 /* Restaurant+Convenience.swift */,
+				95F4742223C679420075B7FF /* ReviewRepresentation.swift */,
+				95F4742423C67A910075B7FF /* Review+Convenience.swift */,
 				9572412623C522E2004951A5 /* CoreDataStack.swift */,
 			);
 			path = "Core Data";
@@ -227,6 +237,8 @@
 			children = (
 				9589071523C3F3A400D7A1F4 /* ReviewDetailViewController.swift */,
 				9589071723C3F3D200D7A1F4 /* ReviewTableViewController.swift */,
+				95F4742623C698E70075B7FF /* AddReviewViewController.swift */,
+				95F4742823C6A34A0075B7FF /* ReviewTableViewCell.swift */,
 				9589071923C3F4F300D7A1F4 /* AllReviewsTableViewCell.swift */,
 			);
 			path = "Review View Controllers";
@@ -365,6 +377,7 @@
 			files = (
 				9572412523C50AFE004951A5 /* FoodieFun.xcdatamodeld in Sources */,
 				95F4742123C65F7A0075B7FF /* DetailRestViewController.swift in Sources */,
+				95F4742723C698E70075B7FF /* AddReviewViewController.swift in Sources */,
 				9589070A23C3B9A300D7A1F4 /* LoginViewController.swift in Sources */,
 				958906D823C3AFFE00D7A1F4 /* AppDelegate.swift in Sources */,
 				9572412923C528C9004951A5 /* RestaurantRepresentation.swift in Sources */,
@@ -374,6 +387,7 @@
 				9589071223C3BA6900D7A1F4 /* RestTableViewCell.swift in Sources */,
 				9572412723C522E2004951A5 /* CoreDataStack.swift in Sources */,
 				9589070C23C3B9B200D7A1F4 /* SignUpViewController.swift in Sources */,
+				95F4742523C67A910075B7FF /* Review+Convenience.swift in Sources */,
 				9589071623C3F3A400D7A1F4 /* ReviewDetailViewController.swift in Sources */,
 				9572412023C4E730004951A5 /* RestaurantController.swift in Sources */,
 				95F4741F23C6414A0075B7FF /* AddRestViewController.swift in Sources */,
@@ -381,6 +395,8 @@
 				9572411B23C4E6DC004951A5 /* User.swift in Sources */,
 				9572412B23C529C8004951A5 /* Restaurant+Convenience.swift in Sources */,
 				9589071A23C3F4F300D7A1F4 /* AllReviewsTableViewCell.swift in Sources */,
+				95F4742323C679420075B7FF /* ReviewRepresentation.swift in Sources */,
+				95F4742923C6A34A0075B7FF /* ReviewTableViewCell.swift in Sources */,
 				9589071423C3F36800D7A1F4 /* ProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
