@@ -10,11 +10,12 @@ import XCTest
 
 class FoodieFunUITests: XCTestCase {
     
-    var app: XCUIApplication!
+    var app = XCUIApplication()
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-
+        app.launch()
+        sleep(2)
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
 
@@ -25,8 +26,32 @@ class FoodieFunUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testSorting() {
+    func testLogin() {
+       
+       let usernameTF = app.textFields["Username"]
+        usernameTF.tap()
+        usernameTF.typeText("Dennis\n")
+        let passwordTF = app.secureTextFields["Password"]
+        passwordTF.tap()
+        passwordTF.typeText("Rudolph")
+        let signInButton = app.buttons["Sign In"]
+        signInButton.tap()
+        XCTAssert(app.staticTexts["Foodie Fun"].exists)
         
+    }
+    
+    func logIn() {
+        
+        sleep(5)
+        
+        let usernameTF = app.textFields["Username"]
+        usernameTF.tap()
+        usernameTF.typeText("Dennis\n")
+        let passwordTF = app.secureTextFields["Password"]
+        passwordTF.tap()
+        passwordTF.typeText("Rudolph")
+        let signInButton = app.buttons["Sign In"]
+        signInButton.tap()
     }
 
     func testLaunchPerformance() {

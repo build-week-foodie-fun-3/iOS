@@ -67,6 +67,9 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jYg-Wd-eUn">
                                         <rect key="frame" x="0.0" y="24.5" width="374" height="34"/>
                                         <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Username">
+                                            <bool key="isElement" value="NO"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="Uki-Tz-UQZ"/>
                                         </constraints>
@@ -95,6 +98,9 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kgS-cV-UTO">
                                         <rect key="frame" x="0.0" y="28.5" width="374" height="34"/>
                                         <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="Password">
+                                            <bool key="isElement" value="NO"/>
+                                        </accessibility>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="34" id="bgM-lY-fQH"/>
                                         </constraints>
@@ -115,6 +121,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyt-PG-nTP">
                                 <rect key="frame" x="20" y="752" width="374" height="50"/>
                                 <color key="backgroundColor" red="0.0078431372550000003" green="0.49803921569999998" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Sign In"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="EES-OP-rDf"/>
                                 </constraints>
@@ -372,76 +379,6 @@
             </objects>
             <point key="canvasLocation" x="2570" y="-565"/>
         </scene>
-        <!--Review Table View Controller-->
-        <scene sceneID="ILY-BO-a4P">
-            <objects>
-                <tableViewController id="0kU-7x-IBw" customClass="ReviewTableViewController" customModule="FoodieFun" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="G1N-ex-o3O">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="m58-NT-6Ui">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Name"/>
-                                <segment title="Price"/>
-                                <segment title="Type"/>
-                                <segment title="Rating"/>
-                                <segment title="Recent"/>
-                            </segments>
-                        </segmentedControl>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="AllReviewCell" rowHeight="99" id="UKL-vb-frX" customClass="AllReviewsTableViewCell" customModule="FoodieFun" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="60" width="414" height="99"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UKL-vb-frX" id="OlE-Zc-ETM">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="99"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d2W-xB-oqL">
-                                            <rect key="frame" x="20" y="11" width="112" height="77"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgB-iu-mBq">
-                                            <rect key="frame" x="140" y="11" width="45" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Pw-5d-iEC">
-                                            <rect key="frame" x="140" y="47" width="39" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EF-A4-MDI">
-                                            <rect key="frame" x="299" y="39" width="49" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="dqS-HE-0k6" kind="show" id="UA2-Jp-D3v"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="0kU-7x-IBw" id="Z4y-G4-kZR"/>
-                            <outlet property="delegate" destination="0kU-7x-IBw" id="cpY-c1-5Qm"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Ooq-Ea-GbN"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rhG-Ns-OJt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1048" y="860"/>
-        </scene>
         <!--Foodie Fun-->
         <scene sceneID="hd2-8x-cOr">
             <objects>
@@ -482,9 +419,6 @@
                                             <rect key="frame" x="8" y="8" width="106" height="34"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="All Reviews"/>
-                                            <connections>
-                                                <segue destination="0kU-7x-IBw" kind="show" id="wBE-ud-AwC"/>
-                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sSx-5h-XVL">
                                             <rect key="frame" x="8" y="45" width="106" height="34"/>
@@ -1084,7 +1018,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i5T-sx-mBI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3612" y="799"/>
+            <point key="canvasLocation" x="3162" y="861"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pa4-3v-E53">
@@ -1107,7 +1041,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="day-71-5GN"/>
-        <segue reference="0cE-SX-n7B"/>
-        <segue reference="7HO-Ie-Ztm"/>
+        <segue reference="bMZ-Ov-i3C"/>
     </inferredMetricsTieBreakers>
 </document>
