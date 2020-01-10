@@ -40,6 +40,15 @@ class DetailRestViewController: UIViewController {
           }
           return frc
       }()
+    
+    let demoImages: [String] = [
+        "https://images.pexels.com/photos/6267/menu-restaurant-vintage-table.jpg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+        "https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+        "https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+    
+    ]
+    
+    var demoIndex = Int.random(in: 0...2)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,20 +59,13 @@ class DetailRestViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard let restaurant = restaurant else { return }
+        guard restaurant != nil else { return }
         do {
             try self.fetchedResultsController.performFetch()
             self.reviewTableView.reloadData()
-        } catch {
+    } catch {
             print("error with the thing")
         }
-    }
-    
-    
-    @IBAction func addPhotoButtonTapped(_ sender: UIButton) {
-    }
-    
-    @IBAction func addReviewButtonTapped(_ sender: UIButton) {
     }
     
     
@@ -73,8 +75,20 @@ class DetailRestViewController: UIViewController {
         hoursLabel.text = restaurant?.hours
         ratingLabel.text = restaurant?.rating
         typeLabel.text = restaurant?.typeofcuisine
+        if restImageView.image == nil, let imageURL = URL(string: demoImages[demoIndex]) {
+            
+            do {
+                let image = try UIImage(withContentsOfURL: imageURL)
+                restImageView.image = image
+            } catch {
+                print("Error converting image URL: \(error)")
+            }
+        }
+        
+        demoIndex = Int.random(in: 0...2)
     }
     
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -87,6 +101,11 @@ class DetailRestViewController: UIViewController {
             if let detailVC = segue.destination as? ReviewDetailViewController,
                 let indexPath = reviewTableView.indexPathForSelectedRow {
                 detailVC.review = fetchedResultsController.object(at: indexPath)
+                detailVC.restaurantController = restaurantController
+            }
+        } else if segue.identifier == "EditRestSegue" {
+            if let detailVC = segue.destination as? AddRestViewController {
+                detailVC.restaurant = self.restaurant
                 detailVC.restaurantController = restaurantController
             }
         }
@@ -167,6 +186,16 @@ extension DetailRestViewController: UITableViewDelegate, UITableViewDataSource, 
             return
         }
         
+    }
+    
+}
+
+extension UIImage {
+    
+    convenience init?(withContentsOfURL url: URL) throws {
+        let imageData = try Data(contentsOf: url)
+        
+        self.init(data: imageData)
     }
     
 }

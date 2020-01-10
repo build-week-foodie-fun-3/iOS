@@ -13,7 +13,7 @@ class ReviewTableViewCell: UITableViewCell {
     @IBOutlet weak var nameTF: UILabel!
     @IBOutlet weak var priceTF: UILabel!
     @IBOutlet weak var ratingTF: UILabel!
-    @IBOutlet weak var reviewImageView: UIImageView!
+ 
     
     var review: Review? {
         didSet {

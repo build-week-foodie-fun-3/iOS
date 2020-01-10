@@ -11,6 +11,7 @@ import UIKit
 class AddRestViewController: UIViewController {
     
     var restaurantController: RestaurantController?
+    var restaurant: Restaurant?
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var locationTF: UITextField!
@@ -26,11 +27,21 @@ class AddRestViewController: UIViewController {
     }
     
     @IBAction func createRestButtonTapped(_ sender: UIButton) {
-        guard let restaurantController = restaurantController, let userid = restaurantController.loggedInUser?.id, let name = nameTextField.text, !name.isEmpty, let location = locationTF.text, !location.isEmpty, let rating = ratingTF.text, !rating.isEmpty else { return }
-        
-        restaurantController.createRestaurant(id: userid, name: name, location: location, hours: hoursTF.text ?? "", photoUrl: photoTF.text ?? "", rating: rating, typeOfCuisine: typeTF.text ?? "", context: CoreDataStack.shared.mainContext) {
-            DispatchQueue.main.async {
-                self.dismiss(animated: true, completion: nil)
+        if restaurant == nil {
+            guard let restaurantController = restaurantController, let userid = restaurantController.loggedInUser?.id, let name = nameTextField.text, !name.isEmpty, let location = locationTF.text, !location.isEmpty, let rating = ratingTF.text, !rating.isEmpty else { return }
+            
+            restaurantController.createRestaurant(id: userid, name: name, location: location, hours: hoursTF.text ?? "", photoUrl: photoTF.text ?? "", rating: rating, typeOfCuisine: typeTF.text ?? "", context: CoreDataStack.shared.mainContext) {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        } else {
+            guard let restaurantController = restaurantController, let userid = restaurantController.loggedInUser?.id, let name = nameTextField.text, !name.isEmpty, let location = locationTF.text, !location.isEmpty, let rating = ratingTF.text, !rating.isEmpty, let restaurant = restaurant else { return }
+            
+            restaurantController.updateRestaurant(restaurant: restaurant, id: userid, name: name, location: location, hours: hoursTF.text ?? "", photoUrl: photoTF.text ?? "", rating: rating, typeOfCuisine: typeTF.text ?? "", context: CoreDataStack.shared.mainContext) {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
         }
     }

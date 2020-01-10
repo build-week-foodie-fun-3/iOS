@@ -125,7 +125,7 @@ class RestaurantController {
         }
     }
     
-    func updateRestaurant(restaurant: Restaurant, id: Int32, name: String, location: String, hours: String, photoUrl: String, rating: String, typeOfCuisine: String, context: NSManagedObjectContext) {
+    func updateRestaurant(restaurant: Restaurant, id: Int32, name: String, location: String, hours: String, photoUrl: String, rating: String, typeOfCuisine: String, context: NSManagedObjectContext, completion: @escaping () -> Void) {
         
         updateRestaurantToServer(restaurant: restaurant) { (result) in
             do {
@@ -357,7 +357,7 @@ class RestaurantController {
         }
     }
     
-    func updateReview(review: Review, restaurantName: String, menuItem: String, price: String, itemRating: Int32, photoUrl: String, itemReview: String, typeOfCuisine: String, context: NSManagedObjectContext) {
+    func updateReview(review: Review, restaurantName: String, menuItem: String, price: String, itemRating: Int32, photoUrl: String, itemReview: String, typeOfCuisine: String, context: NSManagedObjectContext, completion: @escaping () -> Void) {
         
         updateReviewToServer(review: review) { (result) in
             do {

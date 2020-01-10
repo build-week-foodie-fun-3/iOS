@@ -31,7 +31,8 @@ class LoginViewController: UIViewController {
         let user = User(username: username, password: password)
         
         restaurantController.login(with: user) { (error) in
-            guard error == nil else { return }
+            guard error == nil else { print("Incorrect Info")
+                return }
             DispatchQueue.main.async {
                 self.navigationController?.popToRootViewController(animated: true)
             }

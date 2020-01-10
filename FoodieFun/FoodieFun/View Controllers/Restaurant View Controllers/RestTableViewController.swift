@@ -15,7 +15,10 @@ class RestTableViewController: UITableViewController {
     @IBOutlet weak var segmentedSort: UISegmentedControl!
     
     var sideMenuPosition = 1
-    var sortVariable = "name"
+    let nameSD = NSSortDescriptor(key: "name", ascending: true)
+    let recentSD = NSSortDescriptor(key: "id", ascending: false)
+    let typeSD = NSSortDescriptor(key: "typeofcuisine", ascending: true)
+    let ratingSD = NSSortDescriptor(key: "rating", ascending: false)
     
     var restaurantController = RestaurantController()
     
@@ -23,10 +26,10 @@ class RestTableViewController: UITableViewController {
     
         let fetchRequest: NSFetchRequest<Restaurant> = Restaurant.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: sortVariable, ascending: false)
+            nameSD
         ]
 
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: sortVariable, cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: "name", cacheName: nil)
 
         frc.delegate = self
 
@@ -40,16 +43,57 @@ class RestTableViewController: UITableViewController {
     
     
     // MARK: - Methods
-
+    
+    
     @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
         if segmentedSort.selectedSegmentIndex == 0 {
-            sortVariable = "name"
+            do {
+                fetchedResultsController.fetchRequest.sortDescriptors = [nameSD]
+                try fetchedResultsController.performFetch()
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                    
+                }
+            } catch {
+                fatalError("Error performing fetch for frc: \(error)")
+            }
         } else if segmentedSort.selectedSegmentIndex == 1 {
-            sortVariable = "id"
+            do {
+                fetchedResultsController.fetchRequest.sortDescriptors = [recentSD]
+                try fetchedResultsController.performFetch()
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                    
+                }
+            } catch {
+                fatalError("Error performing fetch for frc: \(error)")
+            }
         } else if segmentedSort.selectedSegmentIndex == 2 {
-            sortVariable = "typeofcuisine"
+            do {
+                fetchedResultsController.fetchRequest.sortDescriptors = [typeSD]
+                try fetchedResultsController.performFetch()
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                    
+                }
+            } catch {
+                fatalError("Error performing fetch for frc: \(error)")
+            }
         } else if segmentedSort.selectedSegmentIndex == 3 {
-            sortVariable = "rating"
+            do {
+                fetchedResultsController.fetchRequest.sortDescriptors = [ratingSD]
+                try fetchedResultsController.performFetch()
+                DispatchQueue.main.async {
+                    
+                    self.tableView.reloadData()
+                    
+                }
+            } catch {
+                fatalError("Error performing fetch for frc: \(error)")
+            }
         }
     }
     
@@ -112,7 +156,7 @@ class RestTableViewController: UITableViewController {
 
     // MARK: - Navigation
     
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "LoginSegue" {
             if let loginVC = segue.destination as? LoginViewController {
@@ -128,6 +172,10 @@ class RestTableViewController: UITableViewController {
                 let indexPath = tableView.indexPathForSelectedRow {
                 detailVC.restaurant = fetchedResultsController.object(at: indexPath)
                 detailVC.restaurantController = restaurantController
+            }
+        } else if segue.identifier == "ProfileSegue" {
+            if let profileVC = segue.destination as? ProfileViewController {
+                profileVC.user = restaurantController.loggedInUser
             }
         }
     }
