@@ -453,11 +453,13 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <segments>
                                         <segment title="Name"/>
-                                        <segment title="Price"/>
+                                        <segment title="Recent"/>
                                         <segment title="Type"/>
                                         <segment title="Rating"/>
-                                        <segment title="Recent"/>
                                     </segments>
+                                    <connections>
+                                        <action selector="segmentValueChanged:" destination="KXA-ZI-Pp4" eventType="valueChanged" id="fFB-8H-585"/>
+                                    </connections>
                                 </segmentedControl>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Restaurants" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fw1-4r-rBF">
                                     <rect key="frame" x="130" y="26" width="154" height="36"/>
@@ -550,6 +552,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="segmentedSort" destination="Fez-uo-wnR" id="HAL-Kx-GK4"/>
                         <outlet property="sideMenuView" destination="fvW-PA-1Hl" id="DB2-g1-VIG"/>
                         <segue destination="mc9-qp-fXc" kind="show" identifier="LoginSegue" id="e68-xO-8bv"/>
                     </connections>
@@ -889,12 +892,23 @@
                                 <rect key="frame" x="87" y="299" width="117" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add/Edit Photo"/>
+                                <connections>
+                                    <action selector="addReviewPhotoButtonTapped:" destination="dqS-HE-0k6" eventType="touchUpInside" id="j2a-ET-Ftc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="bgy-Fk-WAb"/>
                     </view>
                     <navigationItem key="navigationItem" id="RwX-AY-wtf"/>
+                    <connections>
+                        <outlet property="nameLabel" destination="giD-66-RL5" id="xfc-xU-6fX"/>
+                        <outlet property="notesTextView" destination="ufs-DR-mAG" id="nyP-ux-h6I"/>
+                        <outlet property="priceLabel" destination="IaD-rP-5VH" id="KGx-Dm-74C"/>
+                        <outlet property="ratingLabel" destination="Gmx-5a-yw9" id="elM-SC-H07"/>
+                        <outlet property="reviewImageView" destination="qgA-84-YFr" id="1ow-w0-MKy"/>
+                        <outlet property="typeLabel" destination="LsB-N0-lRG" id="iid-Cg-z9c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jps-fV-VHc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1054,6 +1068,6 @@
         <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UA2-Jp-D3v"/>
+        <segue reference="0cE-SX-n7B"/>
     </inferredMetricsTieBreakers>
 </document>

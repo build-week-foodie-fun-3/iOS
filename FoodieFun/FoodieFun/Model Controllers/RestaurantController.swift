@@ -17,6 +17,7 @@ class RestaurantController {
     
     let baseURL = URL(string: "https://foodiefun3.herokuapp.com")!
     
+
     
     // MARK: - User methods
     
@@ -106,7 +107,7 @@ class RestaurantController {
     
     // MARK: - Restaurant Core Data CRUD Methods
     
-    func createRestaurant(id: Int32, name: String, location: String, hours: String, photoUrl: String, rating: String, typeOfCuisine: String, context: NSManagedObjectContext) {
+    func createRestaurant(id: Int32, name: String, location: String, hours: String, photoUrl: String, rating: String, typeOfCuisine: String, context: NSManagedObjectContext, completion: @escaping () -> Void) {
         
         guard let loggedInUser = loggedInUser, let userId = loggedInUser.id else { return }
         
@@ -117,6 +118,7 @@ class RestaurantController {
                 _ = try result.get()
 
                 self.fetchAllRestaurantsFromServer()
+                completion()
             } catch {
                 print("Error creating a restaurant to server: \(error)")
             }
@@ -339,7 +341,7 @@ class RestaurantController {
     
     // MARK: - Review Core Data CRUD Methods
     
-    func createReview(restaurant: Restaurant, restaurantName: String, menuItem: String, price: String, itemRating: Int32, photoUrl: String, itemReview: String, typeOfCuisine: String, context: NSManagedObjectContext) {
+    func createReview(restaurant: Restaurant, restaurantName: String, menuItem: String, price: String, itemRating: Int32, photoUrl: String, itemReview: String, typeOfCuisine: String, context: NSManagedObjectContext, completion: @escaping () -> Void) {
                 
         let reviewPostRep = ReviewPostRepresentation(id: nil, menuItem: menuItem, price: price, itemRating: itemRating, photoUrl: photoUrl, itemReview: itemReview, typeOfCuisine: typeOfCuisine, restaurantId: restaurant.id)
         
@@ -348,6 +350,7 @@ class RestaurantController {
                 _ = try result.get()
 
                 self.fetchAllReviewsForRestaurantFromServer(restaurant: restaurant)
+                completion()
             } catch {
                 print("Error creating a review to server: \(error)")
             }

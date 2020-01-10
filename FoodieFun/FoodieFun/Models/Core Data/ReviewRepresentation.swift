@@ -25,7 +25,7 @@ struct ReviewRepresentation: Codable {
         case itemRating = "itemrating"
         case photoUrl = "photourl"
         case itemReview = "itemreview"
-        case typeOfCuisine = "typeofcusine"
+        case typeOfCuisine = "typeofcuisine"
         case name
     }
 }
@@ -47,7 +47,7 @@ struct ReviewPostRepresentation: Codable {
         case itemRating = "itemrating"
         case photoUrl = "photourl"
         case itemReview = "itemreview"
-        case typeOfCuisine = "typeofcusine"
+        case typeOfCuisine = "typeofcuisine"
         case restaurantId = "restaurant_id"
     }
 }

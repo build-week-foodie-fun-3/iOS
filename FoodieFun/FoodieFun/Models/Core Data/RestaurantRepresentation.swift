@@ -25,7 +25,7 @@ struct RestaurantRepresentation: Codable {
         case hours
         case rating
         case photoUrl = "photourl"
-        case typeOfCuisine = "typeofcusine"
+        case typeOfCuisine = "typeofcuisine"
         case userId = "user_id"
     }
 }

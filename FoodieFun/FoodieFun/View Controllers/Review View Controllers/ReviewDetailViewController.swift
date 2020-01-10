@@ -9,22 +9,32 @@
 import UIKit
 
 class ReviewDetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
+    @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var reviewImageView: UIImageView!
+    
+    
+    var review: Review?
+    var restaurantController: RestaurantController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        updateViews()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func addReviewPhotoButtonTapped(_ sender: UIButton) {
     }
-    */
-
+    
+    func updateViews() {
+        guard let review = review else { return }
+        nameLabel.text = review.menuitem
+        typeLabel.text = review.typeofcuisine
+        priceLabel.text = review.price
+        ratingLabel.text = String(review.itemrating)
+        notesTextView.text = review.itemreview
+    }
 }

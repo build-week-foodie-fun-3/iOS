@@ -48,6 +48,18 @@ class DetailRestViewController: UIViewController {
         self.reviewTableView.delegate = self
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard let restaurant = restaurant else { return }
+        do {
+            try self.fetchedResultsController.performFetch()
+            self.reviewTableView.reloadData()
+        } catch {
+            print("error with the thing")
+        }
+    }
+    
+    
     @IBAction func addPhotoButtonTapped(_ sender: UIButton) {
     }
     
@@ -70,6 +82,12 @@ class DetailRestViewController: UIViewController {
             if let addVC = segue.destination as? AddReviewViewController {
                 addVC.restaurantController = restaurantController
                 addVC.restaurant = restaurant
+            }
+        } else if segue.identifier == "ReviewDetailSegue" {
+            if let detailVC = segue.destination as? ReviewDetailViewController,
+                let indexPath = reviewTableView.indexPathForSelectedRow {
+                detailVC.review = fetchedResultsController.object(at: indexPath)
+                detailVC.restaurantController = restaurantController
             }
         }
     }
@@ -97,8 +115,9 @@ extension DetailRestViewController: UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            // delete review
+            let review = fetchedResultsController.object(at: indexPath)
             
+            restaurantController?.deleteReview(review: review, context: CoreDataStack.shared.mainContext)
         }
     }
     

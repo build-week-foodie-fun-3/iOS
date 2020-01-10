@@ -12,18 +12,21 @@ import CoreData
 class RestTableViewController: UITableViewController {
     
     @IBOutlet weak var sideMenuView: UIView!
+    @IBOutlet weak var segmentedSort: UISegmentedControl!
+    
     var sideMenuPosition = 1
+    var sortVariable = "name"
     
     var restaurantController = RestaurantController()
     
     lazy var fetchedResultsController: NSFetchedResultsController<Restaurant> = {
-
+    
         let fetchRequest: NSFetchRequest<Restaurant> = Restaurant.fetchRequest()
         fetchRequest.sortDescriptors = [
-            NSSortDescriptor(key: "name", ascending: true)
+            NSSortDescriptor(key: sortVariable, ascending: false)
         ]
 
-        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: "name", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: sortVariable, cacheName: nil)
 
         frc.delegate = self
 
@@ -38,7 +41,18 @@ class RestTableViewController: UITableViewController {
     
     // MARK: - Methods
 
-
+    @IBAction func segmentValueChanged(_ sender: UISegmentedControl) {
+        if segmentedSort.selectedSegmentIndex == 0 {
+            sortVariable = "name"
+        } else if segmentedSort.selectedSegmentIndex == 1 {
+            sortVariable = "id"
+        } else if segmentedSort.selectedSegmentIndex == 2 {
+            sortVariable = "typeofcuisine"
+        } else if segmentedSort.selectedSegmentIndex == 3 {
+            sortVariable = "rating"
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenuView.isHidden = true
@@ -49,11 +63,14 @@ class RestTableViewController: UITableViewController {
         
         if restaurantController.bearer == nil {
             performSegue(withIdentifier: "LoginSegue", sender: self)
-            
         } else {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
+            restaurantController.fetchAllRestaurantsFromServer( completion: { (_) in
+                DispatchQueue.main.async {
+                    
+                        self.tableView.reloadData()
+                    
+                }
+            })
         }
     }
 
@@ -79,7 +96,9 @@ class RestTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            // delete restaurant
+            let restaurant = fetchedResultsController.object(at: indexPath)
+            
+            restaurantController.deleteRestaurant(restaurant: restaurant, context: CoreDataStack.shared.mainContext)
             
         }
     }
@@ -90,7 +109,7 @@ class RestTableViewController: UITableViewController {
     }
 
     
-    
+
     // MARK: - Navigation
     
 
@@ -116,12 +135,14 @@ class RestTableViewController: UITableViewController {
 
 extension RestTableViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+
         tableView.beginUpdates()
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
+    
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         

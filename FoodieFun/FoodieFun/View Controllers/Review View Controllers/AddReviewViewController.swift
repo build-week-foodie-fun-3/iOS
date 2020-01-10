@@ -27,8 +27,10 @@ class AddReviewViewController: UIViewController {
     @IBAction func createReviewButtonTapped(_ sender: UIButton) {
         guard let restaurantController = restaurantController, let restaurant = restaurant, let restName = restaurant.name, let menuItem = menuItemTF.text, !menuItem.isEmpty, let ratingString = ratingTF.text, let price = priceTF.text else { return }
         
-        restaurantController.createReview(restaurant: restaurant, restaurantName: restName, menuItem: menuItem, price: price, itemRating: Int32(ratingString) ?? 0, photoUrl: photoTF.text ?? "", itemReview: reviewTF.text ?? "", typeOfCuisine: typeTF.text ?? "", context: CoreDataStack.shared.mainContext)
-        
-        self.dismiss(animated: true, completion: nil)
+        restaurantController.createReview(restaurant: restaurant, restaurantName: restName, menuItem: menuItem, price: price, itemRating: Int32(ratingString) ?? 0, photoUrl: photoTF.text ?? "", itemReview: reviewTF.text ?? "", typeOfCuisine: typeTF.text ?? "", context: CoreDataStack.shared.mainContext) {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
 }
